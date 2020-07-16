@@ -7,15 +7,21 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.1/css/all.min.css">
   <link rel="stylesheet" href="/css/style.css">
-  <title>Football Blog</title>
+  <title>Exercise Tracker</title>
 </head>
 
 <body>
-  <div class="container">
+  {{> _header}}
+  <div class="container main-container">
     {{{body}}}
   </div>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      M.Sidenav.init(document.querySelector('.sidenav'))
+    });
+  </script>
 </body>
 
 </html>

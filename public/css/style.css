@@ -79,6 +79,10 @@ select {
 
 .login-container {
   width: 400px;
-  margin-top: 50px;
+  margin-top: 3rem;
   text-align: center;
+}
+
+.main-container {
+  margin-top: 3rem;
 }
