@@ -7,10 +7,10 @@ const ensureAuth = (req, res, next) => {
 }
 
 const ensureGuest = (req, res, next) => {
-  if (req.isAuthenticated()) {
-    res.redirect('/dashboard')
-  } else {
+  if (!req.isAuthenticated()) {
     return next()
+  } else {
+    res.redirect('/dashboard')
   }
 }
 
