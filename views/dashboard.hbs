@@ -2,3 +2,27 @@
 <h1>Welcome {{name}}</h1>
 <br />
 <p>Here are your recent exercises:</p>
+{{#if exercises}}
+<table class="striped">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Date</th>
+      <th>Description</th>
+      <th>Duration</th>
+    </tr>
+  </thead>
+  <tbody>
+    {{#each exercises}}
+    <tr>
+      <td><a href="/exercises/{{_id}}"></a>{{name}}</td>
+      <td>{{date}}</td>
+      <td>{{description}}</td>
+      <td>{{duration}} minutes</td>
+    </tr>
+    {{/each}}
+  </tbody>
+</table>
+{{else}}
+<p>You have not completed any exercises</p>
+{{/if}}

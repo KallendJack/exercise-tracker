@@ -2,6 +2,8 @@ const express = require('express')
 const router = express.Router()
 const { ensureAuth, ensureGuest } = require('../middleware/auth')
 
+const Exercise = require('../models/Exercise')
+
 // @desc    Login
 // @route   GET /
 router.get('/', ensureGuest, (req, res) => {
@@ -20,6 +22,7 @@ router.get('/dashboard', ensureAuth, async (req, res) => {
     })
   } catch (err) {
     console.log(err)
+    res.render('error/500')
   }
 })
 
