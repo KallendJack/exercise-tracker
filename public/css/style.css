@@ -90,3 +90,9 @@ p {
 .main-container {
   margin-top: 3rem;
 }
+
+.user-image {
+  display: inline-block;
+  width: 30px;
+  border-radius: 50%;
+}

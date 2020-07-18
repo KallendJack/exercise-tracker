@@ -10,11 +10,28 @@ router.get('/add', ensureAuth, (req, res) => {
   res.render('exercises/add')
 })
 
+// @desc    Show everyones exercises
+// @route   GET /exercises
+router.get('/', ensureAuth, async (req, res) => {
+  try {
+    const exercises = await Exercise.find({})
+      .populate('user')
+      .sort({ date: 'desc' })
+      .lean()
+
+    res.render('exercises', {
+      exercises,
+    })
+  } catch (err) {
+    console.log(err)
+    res.render('error/500')
+  }
+})
+
 // @desc    Process add form
 // @route   POST /exercises
 router.post('/', ensureAuth, async (req, res) => {
   try {
-    console.log(req.body)
     req.body.user = req.user.id
     await Exercise.create(req.body)
     res.redirect('/dashboard')

@@ -1,10 +1,11 @@
-<h6>{{name}}'s Dashboard</h6>
+<h6>All User Exercises</h6>
 <br />
-<p>Here are your recent exercises:</p>
+<p>Here is everyones recent exercises:</p>
 {{#if exercises}}
 <table class="striped">
   <thead>
     <tr>
+      <th>User</th>
       <th>Name</th>
       <th>Date</th>
       <th>Duration</th>
@@ -13,6 +14,7 @@
   <tbody>
     {{#each exercises}}
     <tr>
+      <td><img src="{{user.image}}" alt="User Image" class="user-image"></td>
       <td><a href="/exercises/{{_id}}">{{name}}</a></td>
       <td>{{formatDate date 'MMMM Do YYYY, h:mm:ss a'}}</td>
       <td>{{duration}} minutes</td>
@@ -21,5 +23,5 @@
   </tbody>
 </table>
 {{else}}
-<p>You have not completed any exercises</p>
+<p>No exercises have been completed</p>
 {{/if}}

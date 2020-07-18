@@ -8,7 +8,6 @@ const passport = require('passport')
 const session = require('express-session')
 const MongoStore = require('connect-mongo')(session)
 const connectDB = require('./config/db')
-const { urlencoded } = require('express')
 
 // Load config
 dotenv.config({ path: './config/config.env' })
@@ -29,8 +28,14 @@ if (process.env.NODE_ENV === 'development') {
   app.use(morgan('dev'))
 }
 
+// Handlebars Helpers
+const { formatDate } = require('./helpers/hbs')
+
 // Handlebars
-app.engine('.hbs', exphbs({ defaultLayout: 'main', extname: '.hbs' }))
+app.engine(
+  '.hbs',
+  exphbs({ defaultLayout: 'main', extname: '.hbs', helpers: { formatDate } })
+)
 app.set('view engine', '.hbs')
 
 // Sessions
